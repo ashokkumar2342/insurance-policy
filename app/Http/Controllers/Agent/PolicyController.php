@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Agent;
 
 use App\Http\Controllers\Controller;
 use App\Model\Agent\Agent;
+use App\Model\Agent\PolicyDetail;
 use Auth;
 use Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Storage;
-
-class AgentController extends Controller
+class PolicyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +19,8 @@ class AgentController extends Controller
      */
     public function index()
     {
-        $students= Agent::all();
-        return view('admin.agent.agent-details.list',compact('agent'));
+        $students= PolicyDetail::all();
+        return view('student.agent-details.list',compact('agent'));
     } 
     /**
      * Show the form for creating a new resource.
@@ -30,7 +30,7 @@ class AgentController extends Controller
     public function create()
     { 
          
-        return view('admin.agent.agent-details.add');
+        return view('student.policy.form');
     }
 
     
@@ -39,10 +39,10 @@ class AgentController extends Controller
     {   
          
         $rules=[
-      "registration_date" => 'required',
+      "policy_registration_date" => 'required',
       
       
-      "name" => 'required|max:199',
+      "policy_holder_name" => 'required|max:199',
       
       "father_name" => 'required|max:199',
       
@@ -76,7 +76,7 @@ class AgentController extends Controller
         }
         $username = str_random('10');
         $char = substr( str_shuffle( "abcdefghijklmnopqrstuvwxyz0123456789" ), 0, 6 );
-        $agent= new Agent();
+        $agent= new PolicyDetail();
         $picture = $request->file('picture'); 
         $picture->store('agent/profile');
         $doc_pan_card = $request->file('doc_pan_card'); 
@@ -89,13 +89,24 @@ class AgentController extends Controller
         $agent->doc_pan_card = $doc_pan_card->hashName();
         $agent->doc_aadhaar_card = $doc_aadhaar_card->hashName();
         $agent->doc_bank_details_card = $doc_bank_details_card->hashName();
-        $agent->username= $username;    
-        $agent->password = bcrypt($char);
-        
-        $agent->introducer_id = 0; 
-        $agent->registration_date= date('Y-m-d',strtotime($request->registration_date)); 
-        $agent->name= $request->name; 
+ 
+        $agent->agent_id = getAgentId(); 
+        $agent->policy_registration_date= date('Y-m-d',strtotime($request->policy_registration_date)); 
+        $agent->policy_holder_name= $request->policy_holder_name; 
         $agent->father_name= $request->father_name; 
+        $agent->mother_name= $request->mother_name; 
+        $agent->spouse_name= $request->spouse_name; 
+        $agent->policy_name= $request->policy_name; 
+        $agent->amount= $request->amount; 
+        $agent->No_of_instalment= $request->No_of_instalment; 
+        $agent->nominee_name= $request->nominee_name; 
+        $agent->nominee_relation= $request->nominee_relation; 
+        $agent->nominee_mobile= $request->nominee_mobile; 
+        $agent->nominee_address= $request->nominee_address; 
+        $agent->start_month_year= date('Y-m-d',strtotime($request->policy_registration_date));
+        $agent->end_month_year= date('Y-m-d',strtotime($request->end_month_year));
+        $agent->no_of_year= $request->no_of_year; 
+        $agent->period= $request->period;  
         $agent->mobile= $request->mobile; 
         $agent->email= $request->email;
         $agent->pan_no= $request->pan_no;
@@ -107,57 +118,15 @@ class AgentController extends Controller
         $agent->state= $request->state;
         $agent->city= $request->city;
         $agent->pincode= $request->pincode;        
-        $agent->ifsc_code= $request->ifsc_code;        
-        $agent->bank_name= $request->bank_name;        
-        $agent->account_no= $request->account_no;        
-        $agent->account_holder_name= $request->account_holder_name;        
         if($agent->save()){            
-            $agent->username= 'ISKOOL10'.$agent->id;
-            $agent->save();
-            return response()->json(['status'=>1,'msg'=>'Agent Registration Successfully']);
+            
+             
+            return response()->json(['status'=>1,'msg'=>'Policy Save Successfully']);
         }
         return redirect()->back()->with(['class'=>'error','message'=>'Whoops ! Look like somthing went wrong ..']);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\StudentDetails  $studentDetails
-     * @return \Illuminate\Http\Response
-     */
     
-    public function imageUpdate(Request $request, Student $student){
-
-        $data = $request->image;       
-
-        list($type, $data) = explode(';', $data);
-        list(, $data)      = explode(',', $data);
-        $data = base64_decode($data);
-        $image_name= time().'.png';       
-        $path = Storage_path() . "/app/student/profile/" . $image_name;       
-        file_put_contents($path, $data); 
-        $student->picture = $image_name;
-        $student->save();
-        return response()->json(['success'=>'done']);
-    
-        
-        // $file = $request->file('image');
-
-        // $file->store('student/profile');
-        // $student->picture = $file->hashName();
-        // if($student->save()){  
-        // return response()->json(['success'=>'done']);
-
-        //     return redirect()->route('admin.student.view',$student->id)->with(['class'=>'success','message'=>'student registration success ...']);
-        // }
-        // return redirect()->back()->with(['class'=>'error','message'=>'Whoops ! Look like somthing went wrong ..']);
-    }
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\StudentDetails  $studentDetails
-     * @return \Illuminate\Http\Response
-     */
    
  
    

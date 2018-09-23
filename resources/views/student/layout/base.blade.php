@@ -27,7 +27,7 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" id="body_id">
     <!-- Site wrapper -->
     <div class="wrapper">
       @include('student.include.header')
@@ -63,6 +63,9 @@
     <script src="{{ asset('admin_asset/dist/js/app.min.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('admin_asset/dist/js/demo.js') }}"></script>
+        <script src={!! asset('admin_asset/dist/js/validation/common.js?ver=1') !!}></script>
+    <script src={!! asset('admin_asset/dist/js/customscript.js?ver=1') !!}></script>
+
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
       @include('student.include.message')
     @stack('scripts')

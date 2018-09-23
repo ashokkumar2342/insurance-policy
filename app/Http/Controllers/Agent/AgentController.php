@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\Agent;
 
 use App\Http\Controllers\Controller;
 use App\Model\Agent\Agent;
@@ -20,7 +20,7 @@ class AgentController extends Controller
     public function index()
     {
         $students= Agent::all();
-        return view('admin.agent.agent-details.list',compact('agent'));
+        return view('student.agent-details.list',compact('agent'));
     } 
     /**
      * Show the form for creating a new resource.
@@ -30,7 +30,7 @@ class AgentController extends Controller
     public function create()
     { 
          
-        return view('admin.agent.agent-details.add');
+        return view('student.agent-details.add');
     }
 
     
@@ -90,9 +90,8 @@ class AgentController extends Controller
         $agent->doc_aadhaar_card = $doc_aadhaar_card->hashName();
         $agent->doc_bank_details_card = $doc_bank_details_card->hashName();
         $agent->username= $username;    
-        $agent->password = bcrypt($char);
-        
-        $agent->introducer_id = 0; 
+        $agent->password = bcrypt($char);        
+        $agent->introducer_id = getAgentId(); 
         $agent->registration_date= date('Y-m-d',strtotime($request->registration_date)); 
         $agent->name= $request->name; 
         $agent->father_name= $request->father_name; 
@@ -106,11 +105,12 @@ class AgentController extends Controller
         $agent->p_address= $request->p_address;
         $agent->state= $request->state;
         $agent->city= $request->city;
-        $agent->pincode= $request->pincode;        
+        $agent->pincode= $request->pincode;   
         $agent->ifsc_code= $request->ifsc_code;        
         $agent->bank_name= $request->bank_name;        
         $agent->account_no= $request->account_no;        
-        $agent->account_holder_name= $request->account_holder_name;        
+        $agent->account_holder_name= $request->account_holder_name;      
+        $agent->status= 0;      
         if($agent->save()){            
             $agent->username= 'ISKOOL10'.$agent->id;
             $agent->save();
@@ -148,7 +148,7 @@ class AgentController extends Controller
         // if($student->save()){  
         // return response()->json(['success'=>'done']);
 
-        //     return redirect()->route('admin.student.view',$student->id)->with(['class'=>'success','message'=>'student registration success ...']);
+        //     return redirect()->route('student.view',$student->id)->with(['class'=>'success','message'=>'student registration success ...']);
         // }
         // return redirect()->back()->with(['class'=>'error','message'=>'Whoops ! Look like somthing went wrong ..']);
     }

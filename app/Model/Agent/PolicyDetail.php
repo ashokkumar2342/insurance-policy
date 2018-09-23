@@ -4,7 +4,7 @@ namespace App\Model\Agent;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PoliceDetail extends Model
+class PolicyDetail extends Model
 {
     //
 }

@@ -68,7 +68,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::middleware('web')
              ->prefix('agent')
-             ->namespace('App\Http\Controllers\Student')             
+             ->namespace('App\Http\Controllers\Agent')             
              ->group(base_path('routes/student.php'));
     }
 
