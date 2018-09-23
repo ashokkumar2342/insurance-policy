@@ -127,7 +127,7 @@
                                                   <div class="input-group-addon">
                                                     <i class="fa fa-calendar"></i>
                                                   </div>                   
-                                                    {{ Form::text('No_of_instalment','',['class'=>'form-control datepicker','required']) }}
+                                                    {{ Form::text('No_of_instalment','',['class'=>'form-control','required']) }}
                                                 </div>
                                                
                                                 <p class="text-danger">{{ $errors->first('registration_date') }}</p>
