@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Student\Auth;
+namespace App\Http\Controllers\Agent\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
