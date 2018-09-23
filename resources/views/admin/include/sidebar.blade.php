@@ -26,99 +26,32 @@
         
              
               
-        <li class="treeview">
+    {{--     <li class="treeview">
             <a href="#">
                 <i class="fa fa-user"></i>
-                <span>Account</span>
+                <span>Agent</span>
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
             </a>
             <ul class="treeview-menu">
                 <li><a href="{{ route('admin.account.form') }}"><i class="fa fa-circle-o"></i> Add </a></li>
-                <li><a href="{{ route('admin.account.list') }}"><i class="fa fa-circle-o"></i> List</a></li>
-                <li><a href="{{ route('admin.userClass.list') }}"><i class="fa fa-circle-o"></i> User + Class</a></li>
-
-                
+                <li><a href="{{ route('admin.account.list') }}"><i class="fa fa-circle-o"></i> List</a></li> 
             </ul>
-        </li> 
-        @if(Auth::guard('admin')->user()->minus()->where('minu_id',1)->first()->status == 1)
+        </li> --}} 
         <li class="treeview">
             <a href="#">
                 <i class="fa fa-user"></i>
-                <span>Student</span>
+                <span>Agent</span>
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
                 </span>
             </a>
             <ul class="treeview-menu">
-                <li><a href="{{ route('admin.student.form') }}"><i class="fa fa-circle-o"></i> Add</a></li>               
-                
-                <li><a href="{{ route('admin.student.list') }}"><i class="fa fa-circle-o"></i> List</a></li>
-
+                <li><a href="{{ route('admin.agent.form') }}"><i class="fa fa-circle-o"></i> Add </a></li>
+                <li><a href="{{ route('admin.agent.list') }}"><i class="fa fa-circle-o"></i> List</a></li> 
             </ul>
         </li>
-        @endif
-        <li class="treeview">
-            <a href="#">
-                <i class="fa fa-cogs"></i>
-                <span>Manage</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-            </a>            
-            <ul class="treeview-menu">
-                @if(Auth::guard('admin')->user()->minus()->where('minu_id',2)->first()->status == 1)
-                <li><a href="{{ route('admin.class.list') }}"><i class="fa fa-circle-o"></i> Add Class</a></li>
-                <li><a href="{{ route('admin.section.list') }}"><i class="fa fa-circle-o"></i> Add Section</a></li>
-                @endif
-                {{-- <li><a href="{{ route('admin.account.classfee.list') }}"><i class="fa fa-circle-o"></i> Class Fee</a></li> --}}
-                <li><a href="{{ route('admin.manageSection.list') }}"><i class="fa fa-circle-o"></i> Manage Section</a></li>
-            </ul>
-        </li>      
-        <li class="treeview">
-            <a href="#">
-                <i class="fa fa-newspaper-o"></i>
-                <span>Subject</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-            </a>
-            <ul class="treeview-menu">
-                <li><a href="{{ route('admin.subjectType.list') }}"><i class="fa fa-circle-o"></i> Subject Type </a></li>               
-                <li><a href="{{ route('admin.subject.manageSubject') }}"><i class="fa fa-circle-o"></i> Manage Subject </a></li>            
-                
-            </ul>
-        </li>
-         
-        <li class="treeview">
-            <a href="#">
-                <i class="fa fa-paper-plane-o"></i>
-                <span>User Activity</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-            </a>
-            <ul class="treeview-menu">
-                <li><a href="{{ route('admin.activity.list') }}"><i class="fa fa-circle-o"></i> Activity List </a></li>              
-                
-            </ul>
-        </li>
-        <li class="treeview">
-            <a href="#">
-                <i class="fa fa-sticky-note"></i>
-                <span>Homework</span>
-                <span class="pull-right-container">
-                  <i class="fa fa-angle-left pull-right"></i>
-                </span>
-            </a>
-            <ul class="treeview-menu">
-                <li><a href=""><i class="fa fa-circle-o"></i> Add </a></li>               
-                
-            </ul>
-        </li>
-        
-     
 </section>
 <!-- /.sidebar -->
 </aside>

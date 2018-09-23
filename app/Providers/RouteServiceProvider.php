@@ -67,7 +67,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapStudentRoutes()
     {
         Route::middleware('web')
-             ->prefix('student')
+             ->prefix('agent')
              ->namespace('App\Http\Controllers\Student')             
              ->group(base_path('routes/student.php'));
     }

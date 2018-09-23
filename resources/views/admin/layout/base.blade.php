@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>ISKOOL</title>
+  <title>{{ dashboardName() }}</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -27,7 +27,7 @@
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" id="body_id">
     <!-- Site wrapper -->
     <div class="wrapper">
       @include('admin.include.header')
@@ -42,7 +42,7 @@
             <div class="pull-right hidden-xs">
            
             </div>
-            <strong>Copyright &copy; 2017-2018 <a href="https://www.innovusine.com"></a>.</strong> All rights reserved.
+            <strong>Copyright &copy; {{ date('Y') }} <a href="https://www.innovusine.com"></a>.</strong> All rights reserved.
         </footer>
 
         <!-- Add the sidebar's background. This div must be placed
@@ -63,6 +63,8 @@
     <script src="{{ asset('admin_asset/dist/js/app.min.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="{{ asset('admin_asset/dist/js/demo.js') }}"></script>
+        <script src={!! asset('admin_asset/dist/js/validation/common.js?ver=1') !!}></script>
+    <script src={!! asset('admin_asset/dist/js/customscript.js?ver=1') !!}></script>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
       @include('admin.include.message')
     @stack('scripts')

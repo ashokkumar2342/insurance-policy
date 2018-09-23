@@ -2,7 +2,7 @@
 @section('body')
 <div class="login-box">
   <div class="login-logo">
-    <a href="#"><b>ISKOOL</b></a>
+    <a href="#"><b>{{ dashboardName() }}</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
