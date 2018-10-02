@@ -36,6 +36,7 @@
             </a>
             <ul class="treeview-menu"> 
                  <li><a href="{{ route('agent.form') }}"><i class="fa fa-circle-o"></i> Add </a></li>   
+                 <li><a href="{{ route('agent.list') }}"><i class="fa fa-circle-o"></i> List </a></li>   
                 
             </ul>
         </li> 
@@ -49,6 +50,7 @@
             </a>
             <ul class="treeview-menu">
                 <li><a href="{{ route('policy.form') }}"><i class="fa fa-circle-o"></i> Form </a></li>
+                <li><a href="{{ route('policy.list') }}"><i class="fa fa-circle-o"></i> List </a></li>
                 
             </ul>
         </li>

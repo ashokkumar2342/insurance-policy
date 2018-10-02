@@ -110,10 +110,10 @@
                                             <div class="form-group">
                                                 {{ Form::label('amount','Amount',['class'=>' control-label']) }}      
                                                 <div class="input-group">
-                                                  <div class="input-group-addon">
-                                                    <i class="fa fa-calendar"></i>
+                                                  <div class="input-group-addon"> 
+                                                     
                                                   </div>                   
-                                                    {{ Form::text('amount','',['class'=>'form-control datepicker','required']) }}
+                                                    {{ Form::text('amount','',['class'=>'form-control','required']) }}
                                                 </div>
                                                
                                                 <p class="text-danger">{{ $errors->first('registration_date') }}</p>

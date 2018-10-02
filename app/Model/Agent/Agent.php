@@ -2,8 +2,9 @@
 
 namespace App\Model\Agent;
 
-use Illuminate\Notifications\Notifiable;
+use App\Model\Agent\Agent;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class Agent extends Authenticatable
 {
@@ -27,6 +28,11 @@ class Agent extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function childs() {
+           return $this->hasMany(Agent::class,'introducer_id','id') ;
+       }
+    
         
     
 }

@@ -17,9 +17,13 @@ Route::group(['middleware' => 'student'], function() {
      Route::get('{agent}/delete', 'AgentController@destroy')->name('agent.delete'); 
 
      Route::group(['prefix' => 'policy'], function() {
+        Route::get('list', 'PolicyController@index')->name('policy.list'); 
         Route::get('form', 'PolicyController@create')->name('policy.form'); 
         Route::post('store', 'PolicyController@store')->name('policy.post'); 
      });
+
+
+      Route::get('test', 'PolicyController@premium'); 
 });
  
 

@@ -19,8 +19,10 @@ class AgentController extends Controller
      */
     public function index()
     {
-        $students= Agent::all();
-        return view('student.agent-details.list',compact('agent'));
+      
+        $categories = Agent::where('introducer_id', '=', getAgentId())->get();
+        $allCategories = Agent::pluck('Name','id')->all();
+        return view('student.agent-details.list',compact('categories','allCategories'));
     } 
     /**
      * Show the form for creating a new resource.
@@ -47,7 +49,7 @@ class AgentController extends Controller
       "father_name" => 'required|max:199',
       
       "mobile" => 'required|numeric|digits:10',
-      "email" => "required|max:199|email",
+      "email" => "required|max:199|email|unique:students",
       "aadhaar_no" => 'required|numeric|digits:12',
       "pan_no" => 'required',
       

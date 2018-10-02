@@ -11,6 +11,9 @@ function getAgentId(){
 function getAgent(){
 	return Auth::guard('student')->user();
 }
+function getIntroducerId(){
+	return Auth::guard('student')->user()->introducer_id;
+}
 
 function getAdminId(){
 	return Auth::guard('student')->user()->id;
