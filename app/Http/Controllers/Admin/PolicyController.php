@@ -37,12 +37,12 @@ class PolicyController extends Controller
         $dateFrom = date( 'Y-m-d', strtotime($date[0]));
         $dateTo = date( 'Y-m-d', strtotime($date[1])); 
 
-        $policy = PolicyDetail::orWhereBetween('created_at', [$dateFrom, $dateTo])
+        $policys = PolicyDetail::orWhereBetween('created_at', [$dateFrom, $dateTo])
                                 
                                 ->OrWhere('policy_no',$request->policy_no)                              
-                                ->where('status',1)
+                                 
                                 ->get();
-        $response['data'] = view('admin.policy.daterange_result',compact('policy'))->render();
+        $response['data'] = view('admin.policy.daterange_result',compact('policys'))->render();
         $response['status'] = 1; 
          
         return response()->json($response);
