@@ -18,24 +18,28 @@
                   
                   <th>Name</th>
                   <th>Father Name</th> 
+                  <th>Email</th> 
+                  <th>Mobile No</th> 
                   <th width="80px">Action</th>                  
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($agents as $agent)
                 <tr>
-                  <td>{{ $agent->username }}</td>
+                  <td>{{ $agent->id }}</td>
                   
                   <td>{{ $agent->name }}</td>
                   <td>{{ $agent->father_name }}</td>
+                  <td>{{ $agent->email }}</td>
+                  <td>{{ $agent->mobile }}</td>
                    
                   <td align="center">
                    <a class="btn btn-primary btn-xs" title="View agent" href="{{ route('admin.agent.view',$agent->id) }}"><i class="fa fa-eye"></i></a>
-                    <a class="btn btn-warning btn-xs" title="Edit agent" href="{{ route('admin.agent.edit',$agent->id) }}"><i class="fa fa-pencil"></i></a>
+                    {{-- <a class="btn btn-warning btn-xs" title="Edit agent" href="{{ route('admin.agent.edit',$agent->id) }}"><i class="fa fa-pencil"></i></a> --}}
                     {{-- <a onclick="return confirm('Are you sure to reset this agent password.')" class="btn btn-danger btn-xs" title="Password Reset" href="{{ route('admin.agent.passwordreset',$agent->id) }}"><i class="fa fa-key"></i></a> --}}                    
-                    @if (Auth::guard('admin')->user()->id == 1)
+                    {{-- @if (Auth::guard('admin')->user()->id == 1)
                     <a onclick="return confirm('Are you sure to delete agent.')" class="btn btn-danger btn-xs" title="delete agent" href="{{ route('admin.agent.delete',$agent->id) }}"><i class="fa fa-times"></i></a> 
-                    @endif
+                    @endif --}}
                     
                   </td>
                  

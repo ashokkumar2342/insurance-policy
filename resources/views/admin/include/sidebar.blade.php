@@ -52,6 +52,19 @@
                 <li><a href="{{ route('admin.agent.list') }}"><i class="fa fa-circle-o"></i> List</a></li> 
             </ul>
         </li>
+         <li class="treeview">
+            <a href="#">
+                <i class="fa fa-user"></i>
+                <span>Policy</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="{{ route('admin.policy.show') }}"><i class="fa fa-circle-o"></i> show </a></li>
+                 
+            </ul>
+        </li>
 </section>
 <!-- /.sidebar -->
 </aside>

@@ -19,8 +19,8 @@ class AgentController extends Controller
      */
     public function index()
     {
-        $students= Agent::all();
-        return view('admin.agent.agent-details.list',compact('agent'));
+        $agents= Agent::all();
+        return view('admin.agent.agent-details.list',compact('agents'));
     } 
     /**
      * Show the form for creating a new resource.
@@ -31,6 +31,11 @@ class AgentController extends Controller
     { 
          
         return view('admin.agent.agent-details.add');
+    }
+     public function show($id)
+    { 
+         $agent = Agent::find($id);
+        return view('admin.agent.agent-details.show',compact('agent'));
     }
 
     

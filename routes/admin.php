@@ -35,6 +35,14 @@ Route::group(['middleware' => 'admin'], function() {
 	     Route::get('{agent}/edit', 'AgentController@edit')->name('admin.agent.edit');
 	     Route::get('{agent}/delete', 'AgentController@destroy')->name('admin.agent.delete');
 	     Route::get('{agent}/profileedit', 'AgentController@profileedit')->name('admin.agent.profileedit'); 
+	     });
+	     //--------------------------Agent------------------------------------------
+
+	 Route::group(['prefix' => 'policy'], function() {
+	     Route::get('show', 'PolicyController@index')->name('admin.policy.show');
+	     Route::post('daterange', 'PolicyController@daterange')->name('admin.policy.daterange');
+	    
+	    
 	     });	 	
 	 // ---------------Subject----------------------------------------
 	 Route::group(['prefix' => 'activity'], function() {
